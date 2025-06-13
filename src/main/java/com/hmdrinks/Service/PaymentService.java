@@ -2558,6 +2558,7 @@ public class PaymentService {
         int limit = Integer.parseInt(limitFromParam);
         if (limit >= 100) limit = 100;
         Pageable pageable = PageRequest.of(page - 1, limit);
+        pageable = PageRequest.of(page - 1, limit, Sort.by(Sort.Direction.DESC, "dateRefunded"));
 
         Page<PaymentSummary> paymentsPage = paymentRepository.findAllByStatusAndIsDeletedFalse(Status_Payment.REFUND, pageable);
 
