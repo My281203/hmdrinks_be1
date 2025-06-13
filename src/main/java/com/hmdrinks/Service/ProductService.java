@@ -638,7 +638,7 @@ public class ProductService {
             String desc = "";
 
             if (language == Language.EN) {
-                ProductTranslation translation = translations.get(product.getProId());
+                ProductTranslation translation = productTranslationRepository.findByProduct_ProId(product.getProId());
                 if (translation != null) {
                     name = translation.getProName();
                     desc = translation.getDescription();
